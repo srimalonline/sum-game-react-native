@@ -2,10 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 
 class Game extends React.Component {
+    target = 10 + Math.floor(40 * Math.random());
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.target}>42</Text>
+                <Text style={styles.target}>{this.target}</Text>
             </View>
         );
     };
