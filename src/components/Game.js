@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
+import { View, Text, StyleSheet} from 'react-native';
 import RandomNumber from './src/components/RandomNumber';
 
 class Game extends React.Component {
@@ -24,9 +24,6 @@ class Game extends React.Component {
                         // 
                     )}
                 </View>
-                {this.randomNumbers.map((randomNumber) => 
-                <Text>{randomNumber}</Text>
-                )}
             </View>
         );
     };
