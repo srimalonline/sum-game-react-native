@@ -14,6 +14,11 @@ class Game extends React.Component {
     target = this.randomNumbers
         .slice(0, this.props.randomNumberCount - 2)
         .reduce((acc, curr) => acc + curr, 0);
+=======
+import { View, Text, StyleSheet} from 'react-native';
+
+class Game extends React.Component {
+    target = 10 + Math.floor(40 * Math.random());
     render() {
         return (
             <View style={styles.container}>
