@@ -1,1 +1,0 @@
-# sum-game-react-native
