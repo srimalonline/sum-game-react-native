@@ -12,6 +12,7 @@ class Game extends React.Component {
         selectedIds:[],
         remainingSeconds: this.props.initialSeconds,
     };
+    gameStatus = 'PLAYING';
     target = 10 + Math.floor(40 * Math.random());
     randomNumbers = Array
         .from({length: this.props.randomNumberCount})
@@ -47,8 +48,16 @@ class Game extends React.Component {
          }));
     };
 
+    UNSAFE_componentWillUpdate(nextProps, nextState) {
+        if (nextState.selectedIds !== this.state.selectedIds || 
+            nextState.remainingSeconds === 0
+            ) {
+            this.gameStatus = this.calcGameStatus();
+        }
+    }
+
     //gameStatus: Playing, WON, LOST
-    gameStatus = () => {
+    calcGameStatus = () => {
             const sumSelected = this.state.selectedIds.reduce((acc,curr) => {
                 return acc + this.randomNumbers[curr];
             }, 0);
@@ -67,7 +76,7 @@ class Game extends React.Component {
     }
 
     render() {
-        const gameStatus = this.gameStatus();
+        const gameStatus = this.gameStatus;
         return (
             <View style={styles.container}>
                 <Text style={[styles.target, styles[`STATUS_${gameStatus}`]]}>{this.target}</Text>
