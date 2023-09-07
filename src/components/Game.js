@@ -52,12 +52,12 @@ class Game extends React.Component {
         if (nextState.selectedIds !== this.state.selectedIds || 
             nextState.remainingSeconds === 0
             ) {
-            this.gameStatus = this.calcGameStatus();
+            this.gameStatus = this.calcGameStatus(nextState);
         }
     }
 
     //gameStatus: Playing, WON, LOST
-    calcGameStatus = () => {
+    calcGameStatus = (nextState) => {
             const sumSelected = this.state.selectedIds.reduce((acc,curr) => {
                 return acc + this.randomNumbers[curr];
             }, 0);
